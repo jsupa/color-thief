@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <img
+            src="https://raw.githubusercontent.com/jsupa/crypto-icons/main/icons/xrp.png"
+            id="color-thief-img"
+        />
+        <script src="./color-thief.min.js"></script>
+        <script>
+            window.addEventListener("load", function (event) {
+                var img = new Image();
+
+                img.onload = function () {
+                    var colorThief = new ColorThief();
+                    var palette = colorThief.getPalette(img, 0);
+
+                    document.body.style.backgroundColor = `rgb(${palette[0]})`;
+                };
+
+                img.crossOrigin = "Anonymous";
+                img.src = this.document.getElementById("color-thief-img").src;
+            });
+        </script>
+    </body>
+</html>
