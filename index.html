@@ -5,23 +5,33 @@
     </head>
     <body>
         <img
+            crossorigin="Anonymous"
             src="https://raw.githubusercontent.com/jsupa/crypto-icons/main/icons/xrp.png"
             id="color-thief-img"
         />
+        <div id="color-thief-div">
+            <img
+                crossorigin="Anonymous"
+                src="https://raw.githubusercontent.com/jsupa/crypto-icons/main/icons/etc.png"
+            />
+            <h1>Doge Color</h1>
+        </div>
         <script src="./color-thief.min.js"></script>
         <script>
             window.addEventListener("load", function (event) {
-                var img = new Image();
+                const colorThief = new ColorThief();
+                const img = document.getElementById("color-thief-img");
+                const div = document.getElementById("color-thief-div");
+                const BgPalette = colorThief.getPalette(img, 0);
+                const ImgPalette = colorThief.getPalette(
+                    div.getElementsByTagName("img")[0],
+                    0
+                );
 
-                img.onload = function () {
-                    var colorThief = new ColorThief();
-                    var palette = colorThief.getPalette(img, 0);
-
-                    document.body.style.backgroundColor = `rgb(${palette[0]})`;
-                };
-
-                img.crossOrigin = "Anonymous";
-                img.src = this.document.getElementById("color-thief-img").src;
+                document.body.style.backgroundColor = `rgb(${BgPalette[0]})`;
+                div.getElementsByTagName(
+                    "h1"
+                )[0].style.color = `rgb(${ImgPalette[0]})`;
             });
         </script>
     </body>
